@@ -26,14 +26,14 @@ void my_fun3()
 
 void excute_fun(char *program_name, char *function_name)
 {
-    int fd, i, count;
+    int i, count;
     Elf32_Ehdr *ehdr;
     GElf_Shdr   shdr;
     Elf *elf;
     Elf_Scn *scn = NULL;
     Elf_Data *data;
     int flag = 0;
-    fd = open(program_name, O_RDONLY);
+    int fd = open(program_name, O_RDONLY);
     if(fd < 0) {
         perror("open\n");
         exit(1);
@@ -66,7 +66,6 @@ void excute_fun(char *program_name, char *function_name)
         count = 0;
     else
         count = shdr.sh_size / shdr.sh_entsize;
-    /* printf("count is %d\n", count); */
     for (i = 0; i < count; ++i) {
         GElf_Sym sym;
         gelf_getsym(data, i, &sym);
@@ -82,9 +81,9 @@ void excute_fun(char *program_name, char *function_name)
             }
         }
     }
-    if(!flag) {
+    if(!flag)
         printf("can not find this function\n");
-    }
+
     elf_end(elf);
     close(fd);
 }
@@ -96,7 +95,7 @@ int main(int argc, char *argv[])
         printf("input function_name to excute: ");
         scanf("%s", input);
         excute_fun(argv[0], input);
-        memset(input, 100, 0);
+        memset(input, 0, sizeof(input));
         printf("\n");
     }
     free(input);
