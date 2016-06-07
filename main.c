@@ -10,12 +10,12 @@
 void my_fun()
 {
     int a = 19;
-    printf("my_fun is excute, a is %d \n", a);
+    printf("my_fun is execute, a is %d \n", a);
 }
 
 void my_fun2()
 {
-    printf("my_fun2 is excute\n");
+    printf("my_fun2 is execute\n");
     return;
 }
 
@@ -24,7 +24,7 @@ void my_fun3()
     return;
 }
 
-void excute_fun(char *program_name, char *function_name)
+void execute_fun(char *program_name, char *function_name)
 {
     int i, count;
     Elf32_Ehdr *ehdr;
@@ -92,9 +92,9 @@ int main(int argc, char *argv[])
 {
     char *input = (char*)malloc(100);
     for(;;) {
-        printf("input function_name to excute: ");
+        printf("input function_name to execute: ");
         scanf("%s", input);
-        excute_fun(argv[0], input);
+        execute_fun(argv[0], input);
         memset(input, 0, sizeof(input));
         printf("\n");
     }
