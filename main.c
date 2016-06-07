@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include"head.h"
 #include<stdlib.h>
 #include<elf.h>
 #include<libelf.h>
